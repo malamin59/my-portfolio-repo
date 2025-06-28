@@ -49,7 +49,7 @@ const Contact = () => {
       id="contact"
       className="bg-[#0f172a] text-white py-16 px-6 md:px-20"
     >
-      <h2 className="text-3xl font-bold text-cyan-400 mb-12 text-center">
+      <h2 className="text-3xl font-bold text-cyan-400 lg:mb-12  mb-8 md:mb-10 text-center">
         Contact Me
       </h2>
 
@@ -100,9 +100,10 @@ const Contact = () => {
             onChange={handleChange}
             placeholder="Phone Number"
             required
+            pattern="^01[3-9]\d{8}$"
+            title="Please enter a valid  phone number "
             className="w-full p-3 rounded-md bg-[#0f172a] text-white border border-gray-600 focus:border-cyan-400 outline-none"
           />
-
           <input
             type="email"
             name="email"

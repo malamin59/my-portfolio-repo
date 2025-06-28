@@ -25,13 +25,13 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="bg-[#0f172a] text-white py-12 px-6 md:px-10">
+    <section id="skills" className="bg-[#0f172a] text-white px-0 py-12 lg:px-6 md:px-10">
       <h2 className="text-3xl font-bold text-cyan-400 mb-10 text-center">My Skills</h2>
 
       {/* Marquee section */}
       <div className="mb-14">
         <Marquee pauseOnHover speed={50} gradient={false}>
-          <div className="flex lg:gap-26 gap-8 md:gap-40  text-3xl text-cyan-400">
+          <div className="flex lg:gap-26 gap-8 md:gap-40 text-3xl text-cyan-400">
             <FaHtml5 title="HTML5" />
             <FaCss3Alt title="CSS3" />
             <SiTailwindcss title="Tailwind CSS" />
@@ -45,7 +45,7 @@ const Skills = () => {
       </div>
 
       {/* Radial progress section */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-10 justify-items-center">
+      <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-10 justify-items-center">
         {skills.map((skill, index) => (
           <div key={index} className="text-center space-y-2">
             <div

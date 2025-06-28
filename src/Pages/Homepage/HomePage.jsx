@@ -16,7 +16,7 @@ export default function HomePage() {
       <section id="about" className="bg-[#1c2741]">
         <About />
       </section>
-      <section id="skills" className="bg-[#0f172a] lg:px-25 px-6">
+      <section id="skills" className="bg-[#0f172a] lg:px-25 px-2 ">
         <Skills />
       </section>
       <section id="education" className="bg-[#1c2741] py-8 lg:px-25 px-6">
