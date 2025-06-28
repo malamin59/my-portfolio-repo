@@ -10,7 +10,7 @@ const Home = () => {
         <p className="text-lg">Hello, It's Me</p>
         <h1 className="text-4xl font-bold">AL AMIN</h1>
         <h2 className="text-2xl font-semibold">
-          And I'm a{' '}
+          I'm a{' '}
           <span className="text-cyan-400">
             <Typewriter
               words={['Frontend Developer',

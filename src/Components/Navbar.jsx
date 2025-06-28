@@ -7,10 +7,10 @@ const Navbar = () => {
   const [active, setActive] = useState('home');
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = ['home', 'about', 'Skills' , 'education', 'portfolio', 'contact'];
+  const navItems = ['home', 'about', 'skills' , 'education', 'projects', 'contact'];
 
   return (
-    <div className="navbar bg-[#0f172a] px-4 md:px-20 text-white fixed top-0 left-0 right-0 z-50">
+    <div className="fixed top-0 left-0 right-0 bg-[#0f172a] text-white px-4 md:px-20 h-16 flex items-center z-50">
       {/* Logo */}
       <div className="flex-1">
         <a href="#home" className="text-2xl font-bold">
