@@ -1,37 +1,96 @@
+import { FaLaptopCode, FaCogs, FaFire, FaGlobe } from "react-icons/fa";
+import { motion } from "framer-motion";
 import myImage from "../../assets/unnamed.jpg";
+
 const About = () => {
-    return (
-    <div>
-         <section id="about" className="bg-[#1c2741] text-white py-16 px-6 md:px-20">
-      
-      <div className="flex flex-col md:flex-row items-center md:items-start gap-10 max-w-5xl mx-auto">
-        {/* Image container */}
+  const cards = [
+    {
+      icon: <FaLaptopCode className="text-cyan-400" size={28} />,
+      title: "Frontend Development",
+      desc: "Proficient in React, Tailwind CSS, DaisyUI, React Router, and responsive design. Experienced in building animated UIs and form-driven features.",
+    },
+    {
+      icon: <FaCogs className="text-cyan-400" size={28} />,
+      title: "Backend & Database",
+      desc: "Skilled in Node.js, Express.js, MongoDB. Built and deployed RESTful APIs with authentication, order management, and database integration.",
+    },
+    {
+      icon: <FaFire className="text-cyan-400" size={28} />,
+      title: "Firebase Integration",
+      desc: "Integrated Firebase Auth, Firestore, and hosting in multiple projects for secure and scalable app delivery.",
+    },
+    {
+      icon: <FaGlobe className="text-cyan-400" size={28} />,
+      title: "Career Vision",
+      desc: "Actively seeking freelance and remote roles to contribute to real-world projects and grow professionally. Planning to master Python and advanced stacks next.",
+    },
+  ];
+
+  return (
+    <motion.section
+      id="about"
+      className="bg-[#1c2741] text-white py-16 px-6 max-w-5xl mx-auto"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      {/* Image and About text side by side */}
+      <motion.div
+        className="flex flex-col md:flex-row items-center md:items-start gap-10"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+      >
+        {/* Image */}
         <div className="relative">
           <div className="rounded-full bg-cyan-400 p-[3px] shadow-xl">
             <img
               src={myImage}
               alt="Al Amin"
-              className="rounded-full w-52 h-52 md:w-72 md:h-72 object-cover "
+              className="rounded-full w-52 h-52 md:w-72 md:h-72 object-cover"
             />
           </div>
         </div>
-        {/* Text content */}
-        <div className="max-w-xl text-lg leading-relaxed">
-          <h2 className="text-3xl font-bold mb-4  text-center md:text-left">About <small className='text-3xl  text-cyan-400 '> Me </small></h2>
-          <span className="text-cyan-400">Frontend Developer</span>
+
+        {/* Text */}
+        <div className="max-w-xl text-lg leading-relaxed space-y-6">
+          <h2 className="text-3xl font-bold mb-4 text-center md:text-left">
+            About <small className="text-3xl text-cyan-400">Me</small>
+          </h2>
+          <span className="text-cyan-400 text-xl block mb-4">Frontend Developer</span>
+
           <p>
-            Hi! I'm Alamin, a passionate React developer with experience building responsive and user-friendly web applications. 
-            I enjoy turning ideas into reality using code, and I am always eager to learn new technologies and improve my skills.
+            Hi! I'm Alamin, a passionate React developer with experience building responsive and user-friendly web applications. I enjoy turning ideas into reality using code, and I am always eager to learn new technologies and improve my skills.
           </p>
-          <p className="mt-4">
-            With over 6 months of programming experience, I have developed projects using React, Tailwind CSS, and Firebase, 
-            and I'm excited to continue growing as a full-stack developer.
+
+          <p>
+            With over 6 months of programming experience, I have developed projects using React, Tailwind CSS, and Firebase, and I'm excited to continue growing as a full-stack developer.
           </p>
         </div>
-      </div>
-    </section>
-    </div>
-    );
+      </motion.div>
+
+      {/* Cards below full width */}
+      <motion.div
+        className="grid gap-6 mt-12 lg:grid-cols-2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+      >
+        {cards.map((card, idx) => (
+          <div
+            key={idx}
+            className="bg-[#0f172a] p-6 rounded-lg shadow-lg flex gap-4 items-start"
+          >
+            <div>{card.icon}</div>
+            <div>
+              <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
+              <p className="text-gray-300">{card.desc}</p>
+            </div>
+          </div>
+        ))}
+      </motion.div>
+    </motion.section>
+  );
 };
 
 export default About;
