@@ -1,10 +1,10 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/alamin.png";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
-import { Link } from "react-router";
 
 const Navbar = () => {
-  const [active, setActive] = useState("home");
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
@@ -15,6 +15,8 @@ const Navbar = () => {
     "projects",
     "contact",
   ];
+
+  const active = location.hash ? location.hash.substring(1) : "home";
 
   return (
     <div className="fixed top-0 left-0 right-0 bg-[#0f172a] text-white px-4 md:px-20 h-16 flex items-center z-50">
@@ -32,10 +34,7 @@ const Navbar = () => {
             <li key={item}>
               <Link
                 to={`/#${item}`}
-                onClick={() => {
-                  setActive(item);
-                  setIsOpen(false); // if mobile menu open, close it
-                }}
+                onClick={() => setIsOpen(false)}
                 className={`hover:text-cyan-400 ${
                   active === item ? "text-cyan-400 font-semibold" : ""
                 }`}
@@ -48,7 +47,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Hamburger Button */}
-      <div className="md:hidden flex items-center">
+      <div className="md:hidden flex items-center z-60">
         <button onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? (
             <HiX className="w-6 h-6" />
@@ -58,30 +57,42 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Dropdown Menu */}
-      {isOpen && (
-        <div className="absolute top-full left-0 w-full bg-[#0f172a] md:hidden shadow-md z-40">
-          <ul className="flex flex-col items-start p-4 space-y-2 text-sm">
-            {navItems.map((item) => (
-              <li key={item} className="w-full">
-                {/* import { Link, useLocation } from "react-router-dom"; */}
-
-                <Link
-                  to={`/#${item}`}
-                  onClick={() => {
-                    setActive(item);
-                    setIsOpen(false); // if mobile menu open, close it
-                  }}
-                  className={`hover:text-cyan-400 ${
-                    active === item ? "text-cyan-400 font-semibold" : ""
-                  }`}
-                >
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
-                </Link>
-              </li>
-            ))}
-          </ul>
+      {/* Mobile Sidebar Menu */}
+      <div
+        className={`fixed top-0 left-0 h-full w-64 bg-[#0f172a] shadow-lg transform transition-transform duration-300 ease-in-out z-50
+        ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+      >
+        {/* Close button inside sidebar */}
+        <div className="flex justify-end p-4">
+          <button onClick={() => setIsOpen(false)}>
+            <HiX className="w-6 h-6 text-white" />
+          </button>
         </div>
+
+        {/* Menu items */}
+        <ul className="flex flex-col p-4 space-y-4 text-white text-lg">
+          {navItems.map((item) => (
+            <li key={item}>
+              <Link
+                to={`/#${item}`}
+                onClick={() => setIsOpen(false)}
+                className={`block hover:text-cyan-400 ${
+                  active === item ? "text-cyan-400 font-semibold" : ""
+                }`}
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Overlay (optional) */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={() => setIsOpen(false)}
+        ></div>
       )}
     </div>
   );
