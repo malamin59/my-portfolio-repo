@@ -11,7 +11,7 @@ const About = () => {
             <img
               src={myImage}
               alt="Al Amin"
-              className="rounded-full w-44 h-44 md:w-72 md:h-72 object-cover border-2 border-white"
+              className="rounded-full w-52 h-52 md:w-72 md:h-72 object-cover "
             />
           </div>
         </div>

@@ -1,5 +1,5 @@
 import myImage from "../../assets/unnamed.jpg";
-import { FaTwitter, FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { FaTwitter, FaLinkedinIn, FaGithub, FaDownload } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 
 const Home = () => {
@@ -10,12 +10,14 @@ const Home = () => {
         <p className="text-lg">Hello, It's Me</p>
         <h1 className="text-4xl font-bold">AL AMIN</h1>
         <h2 className="text-2xl font-semibold">
-          I'm a{' '}
+          I'm a{" "}
           <span className="text-cyan-400">
             <Typewriter
-              words={['Frontend Developer',
-        'Lifelong Learner',
-        'Creative Coder']}
+              words={[
+                "Frontend Developer",
+                "Lifelong Learner",
+                "Creative Coder",
+              ]}
               loop={0} // infinite loop
               cursor
               cursorStyle="|"
@@ -26,14 +28,15 @@ const Home = () => {
           </span>
         </h2>
         <p className="text-sm text-gray-300 max-w-md mx-auto md:mx-0">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
-          ab autem repellat reiciendis ipsam perspiciatis.
+          Passionate frontend developer skilled in React, Tailwind, and
+          JavaScript. I love crafting modern web experiences and continuously
+          learning new technologies.
         </p>
 
         {/* Social Icons */}
         <div className="flex justify-center md:justify-start gap-6 text-cyan-400 text-2xl">
           <a
-            href="https://github.com/yourgithub"
+            href="https://github.com/malamin59"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -42,7 +45,7 @@ const Home = () => {
             <FaGithub />
           </a>
           <a
-            href="https://twitter.com/yourtwitter"
+            href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Twitter"
@@ -51,7 +54,7 @@ const Home = () => {
             <FaTwitter />
           </a>
           <a
-            href="https://linkedin.com/in/yourlinkedin"
+            href="https://linkedin.com/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -63,10 +66,12 @@ const Home = () => {
 
         {/* Download CV Button */}
         <a
-          href="/path-to-your-cv.pdf"
-          download
-          className="inline-block mt-6 px-6 py-3 bg-cyan-400 text-black font-semibold rounded-full hover:bg-cyan-500 transition duration-300"
+          href="https://drive.google.com/file/d/1D7gSmHh99yNjTtEo0_yffeR43OiaXZMc/view"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 mt-4 px-6 py-2 bg-cyan-400 text-black font-semibold rounded-full hover:bg-cyan-500 transition duration-300"
         >
+          <FaDownload />
           Download CV
         </a>
       </div>
@@ -76,8 +81,8 @@ const Home = () => {
         <div className="rounded-full bg-cyan-400 p-[3px] shadow-xl">
           <img
             src={myImage}
-            alt="Al Amin"
-            className="rounded-full w-44 h-44 md:w-72 md:h-72 object-cover border-2 border-white"
+            alt="Al Amin - Frontend Developer"
+            className="rounded-full w-65 h-65 md:w-72 md:h-72 object-cover"
           />
         </div>
       </div>
