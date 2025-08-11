@@ -23,7 +23,7 @@ const projects = [
     description:
       "A hostel meal management system where users can view, like, and request meals. Admins can manage upcoming and published meals, handle requests, and track deliveries.",
     liveLink: "https://campusbite-3dd62.web.app/",
-    githubLink: "https://github.com/malamin59/CampusBite",
+    githubLink: "https://github.com/malamin59/optimuspick-web-app",
     challenges:
       "Implementing likes with role-based restrictions and auto-publishing meals when likes reach a threshold.",
     future:
