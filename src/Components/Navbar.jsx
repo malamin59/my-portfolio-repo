@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/alamin.png";
+import logo from "../assets/logo.png";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
 
 const Navbar = () => {

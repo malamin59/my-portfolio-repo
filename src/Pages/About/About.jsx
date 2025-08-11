@@ -1,6 +1,6 @@
 import { FaLaptopCode, FaCogs, FaFire, FaGlobe } from "react-icons/fa";
 import { motion } from "framer-motion";
-import myImage from "../../assets/unnamed.jpg";
+import myImage from "../../assets/alamin.jpg";
 
 const cards = [
   {

@@ -1,5 +1,5 @@
 import { FaGithub } from "react-icons/fa";
-import image from "../assets/alamin.png";
+import image from "../assets/logo.png";
 
 const Footer = () => {
   return (

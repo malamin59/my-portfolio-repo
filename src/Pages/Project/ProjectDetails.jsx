@@ -15,7 +15,17 @@ const ProjectDetails = () => {
       <h2 className="text-3xl font-bold text-cyan-400 mb-6">{project.name}</h2>
       <img src={project.image} alt={project.name} className="w-full max-w-xl mx-auto rounded-lg mb-6" />
       <p className="mb-4"><strong>Description:</strong> {project.description}</p>
-      <p className="mb-4"><strong>Technologies:</strong> {project.tech.join(", ")}</p>
+          {/* Render tech stack */}
+            <div className="flex flex-wrap gap-2 mt-2">
+              {project.tech.map((techItem, i) => (
+                <span
+                  key={i}
+                  className="flex items-center gap-1 px-2 py-1 rounded text-sm"
+                >
+                  {techItem.icon} {techItem.name}
+                </span>
+              ))}
+            </div>
       <p className="mb-4"><strong>Challenges:</strong> {project.challenges}</p>
       <p className="mb-4"><strong>Future Plans:</strong> {project.future}</p>
       <div className="space-x-4 mt-6">
