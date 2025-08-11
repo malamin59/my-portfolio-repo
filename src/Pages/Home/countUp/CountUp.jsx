@@ -8,7 +8,7 @@ const CountUpPage = () => {
   const technologiesCount = 16;
 
   return (
-    <section className="bg-[#0f172a] lg:py-8 py-4 px-4 lg:mr-16 rounded-lg max-w-5xl mx-auto">
+    <section className="bg-[#0f172a] py-4 px-4 lg:-ml-12 lg:mr-16 rounded-lg max-w-5xl mx-auto">
       {/* Use grid on small devices */}
       <div className="grid   grid-cols-3 gap-2  justify-center items-center text-center">
         
@@ -19,7 +19,7 @@ const CountUpPage = () => {
             GitHub <br />Commits
           </p>
           <h1 className="lg:text-5xl text-4xl font-extrabold text-cyan-400">
-            <CountUp start={0} end={githubCommits} duration={3} separator="," />+
+            <CountUp start={0} end={githubCommits} duration={14} separator="," />+
           </h1>
         </div>
 
@@ -30,7 +30,7 @@ const CountUpPage = () => {
             Projects Completed
           </p>
           <h1 className="lg:text-6xl text-4xl font-extrabold text-cyan-400">
-            <CountUp start={0} end={projectsCount} duration={3} />+
+            <CountUp start={0} end={projectsCount} duration={6} />+
           </h1>
         </div>
 
@@ -41,7 +41,7 @@ const CountUpPage = () => {
             Technologies
           </p>
           <h1 className="lg:text-6xl font-extrabold text-4xl text-cyan-400">
-            <CountUp start={0} end={technologiesCount} duration={3} />+
+            <CountUp start={0} end={technologiesCount} duration={5} />+
           </h1>
         </div>
       </div>

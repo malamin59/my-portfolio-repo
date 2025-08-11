@@ -27,7 +27,7 @@ const Home = () => {
       {/* Left Content */}
       <div className="text-center md:text-left max-w-xl space-y-4">
         <p className="text-xl lg:text-3xl italic   ">Hello, It's Me</p>
-        <h1 className="lg:text-7xl md:text-4xl text-4xl font-bold italic  ">
+        <h1 className="lg:text-6xl md:text-4xl text-4xl font-bold italic  ">
           AL AMIN
         </h1>
         <h2 className="text-2xl font-semibold">

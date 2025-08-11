@@ -1,6 +1,7 @@
 import { FaLaptopCode, FaCogs, FaFire, FaGlobe } from "react-icons/fa";
 import { motion } from "framer-motion";
 import myImage from "../../assets/alamin.jpg";
+import { useState } from "react";
 
 const cards = [
   {
@@ -45,6 +46,19 @@ const itemVariants = {
 };
 
 const About = () => {
+  const [showMore , setShowMore] = useState(false);
+   const aboutText = `Hi! I'm Alamin, a passionate React developer with experience
+  building responsive and user-friendly web applications. I enjoy
+  turning ideas into reality using code, and I am always eager to
+  learn new technologies and improve my skills. With over 7 months of
+  programming experience, I have developed projects using React,
+  Tailwind CSS, and Firebase, and I'm excited to continue growing as a
+  full-stack developer. My journey in programming started with curiosity
+  and has evolved into a passion for creating meaningful web applications
+  that solve real-world problems.`;
+ const words = aboutText.trim().split(" ");
+ const displayText = showMore ? aboutText  : words.slice(0, 50).join(" ")+ "..."
+  
   return (
     <section
       id="about"
@@ -74,13 +88,16 @@ const About = () => {
           <h2 className="text-3xl font-bold mb-4 text-center md:text-left">
             About <span className="text-cyan-400">Me</span>
           </h2>
-          <span className="text-cyan-400 text-xl block mb-4">Frontend Developer</span>
-          <p>
-            Hi! I'm Alamin, a passionate React developer with experience building responsive and user-friendly web applications. I enjoy turning ideas into reality using code, and I am always eager to learn new technologies and improve my skills.
-          </p>
-          <p>
-            With over 6 months of programming experience, I have developed projects using React, Tailwind CSS, and Firebase, and I'm excited to continue growing as a full-stack developer.
-          </p>
+          <span className="text-cyan-400 text-xl block mb-4">
+            Frontend Developer
+          </span>
+          <p>{displayText}</p>
+          <button
+            onClick={() => setShowMore(!showMore)}
+            className="text-cyan-400 hover:underline"
+          >
+            {showMore ? "See Less" : "See More"}
+          </button>
         </div>
       </motion.div>
 
