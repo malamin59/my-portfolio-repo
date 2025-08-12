@@ -1,32 +1,39 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { FaEnvelope, FaPhone, FaWhatsapp } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    phone: "",
-    email: "",
-    message: "",
-  });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+ const onSubmit = async (data) => {
+  try {
+    const response = await axios.post("http://localhost:5000/send-email", data);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+    if (response.status === 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Message Sent!",
+        text: response.data.message,
+        confirmButtonColor: "#06b6d4",
+      });
+      reset();
+    }
+  } catch (error) {
     Swal.fire({
-      icon: "success",
-      title: "Message Sent!",
-      text: "Thank you for reaching out. I'll contact you soon",
-      confirmButtonColor: "#06b6d4",
+      icon: "error",
+      title: "Oops...",
+      text: error.response?.data?.message || "Something went wrong!",
+      confirmButtonColor: "#f87171",
     });
-
-    setFormData({ phone: "", email: "", message: "" });
-  };
+  }
+};
 
   const handleWhatsAppClick = () => {
     Swal.fire({
@@ -68,9 +75,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          // On md+ screen, move animation on x-axis instead of y-axis
           style={{ originX: 0 }}
-          // We'll override animation with media queries below
         >
           <p className="text-cyan-300">
             Feel free to reach out for any project inquiries or just to say
@@ -109,7 +114,7 @@ const Contact = () => {
 
         {/* Right side: Form */}
         <motion.form
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           className="flex-1 space-y-5"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -119,33 +124,54 @@ const Contact = () => {
         >
           <input
             type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
+            {...register("phone", {
+              required: "Phone number is required",
+              pattern: {
+                value: /^01[3-9]\d{8}$/,
+                message: "Please enter a valid phone number",
+              },
+            })}
             placeholder="Phone Number"
-            required
-            pattern="^01[3-9]\d{8}$"
-            title="Please enter a valid phone number"
-            className="w-full p-3 rounded-md bg-[#0f172a] text-white border border-gray-600 focus:border-cyan-400 outline-none"
+            className={`w-full p-3 rounded-md bg-[#0f172a] text-white border ${
+              errors.phone ? "border-red-500" : "border-gray-600"
+            } focus:border-cyan-400 outline-none`}
           />
+          {errors.phone && (
+            <p className="text-red-500 text-sm">{errors.phone.message}</p>
+          )}
+
           <input
             type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                message: "Please enter a valid email address",
+              },
+            })}
             placeholder="Email Address"
-            required
-            className="w-full p-3 rounded-md bg-[#0f172a] text-white border border-gray-600 focus:border-cyan-400 outline-none"
+            className={`w-full p-3 rounded-md bg-[#0f172a] text-white border ${
+              errors.email ? "border-red-500" : "border-gray-600"
+            } focus:border-cyan-400 outline-none`}
           />
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email.message}</p>
+          )}
+
           <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
+            {...register("message", {
+              required: "Message is required",
+            })}
             rows="4"
             placeholder="Description"
-            required
-            className="w-full p-3 rounded-md bg-[#0f172a] text-white border border-gray-600 focus:border-cyan-400 outline-none"
+            className={`w-full p-3 rounded-md bg-[#0f172a] text-white border ${
+              errors.message ? "border-red-500" : "border-gray-600"
+            } focus:border-cyan-400 outline-none`}
           />
+          {errors.message && (
+            <p className="text-red-500 text-sm">{errors.message.message}</p>
+          )}
+
           <button
             type="submit"
             className="w-full bg-cyan-400 text-black font-semibold py-3 rounded-md hover:bg-cyan-500 transition"

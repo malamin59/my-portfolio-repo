@@ -19,7 +19,7 @@ const CountUpPage = () => {
             GitHub <br />Commits
           </p>
           <h1 className="lg:text-5xl text-4xl font-extrabold text-cyan-400">
-            <CountUp start={0} end={githubCommits} duration={14} separator="," />+
+            <CountUp start={0} end={githubCommits}  duration={14} separator="," />+
           </h1>
         </div>
 
@@ -41,7 +41,7 @@ const CountUpPage = () => {
             Technologies
           </p>
           <h1 className="lg:text-6xl font-extrabold text-4xl text-cyan-400">
-            <CountUp start={0} end={technologiesCount} duration={5} />+
+            <CountUp start={0} end={technologiesCount}  duration={5}  />+
           </h1>
         </div>
       </div>
