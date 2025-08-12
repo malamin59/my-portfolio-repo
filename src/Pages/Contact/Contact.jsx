@@ -12,28 +12,31 @@ const Contact = () => {
     formState: { errors },
   } = useForm();
 
- const onSubmit = async (data) => {
-  try {
-    const response = await axios.post("http://localhost:5000/send-email", data);
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post(
+        "https://send-email-fawn.vercel.app/send-email",
+        data
+      );
 
-    if (response.status === 200) {
+      if (response.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Message Sent!",
+          text: response.data.message,
+          confirmButtonColor: "#06b6d4",
+        });
+        reset();
+      }
+    } catch (error) {
       Swal.fire({
-        icon: "success",
-        title: "Message Sent!",
-        text: response.data.message,
-        confirmButtonColor: "#06b6d4",
+        icon: "error",
+        title: "Oops...",
+        text: error.response?.data?.message || "Something went wrong!",
+        confirmButtonColor: "#f87171",
       });
-      reset();
     }
-  } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: error.response?.data?.message || "Something went wrong!",
-      confirmButtonColor: "#f87171",
-    });
-  }
-};
+  };
 
   const handleWhatsAppClick = () => {
     Swal.fire({
