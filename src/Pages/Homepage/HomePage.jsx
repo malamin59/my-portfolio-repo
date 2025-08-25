@@ -6,7 +6,7 @@ import Skills from "../Skills/Skills";
 import Educational from "../Educational/Educational.JSX";
 import Contact from "../Contact/Contact";
 import Project from "../Project/Project";
-import Comment from "../Comment/Comment";
+import CommentList from "../Comment/CommentList";
 
 export default function HomePage() {
   return (
@@ -20,6 +20,10 @@ export default function HomePage() {
       <section id="skills" className="bg-[#0f172a] lg:px-25 px-2 ">
         <Skills />
       </section>
+      <section id="comment" className="bg-[#0f172a] lg:px-25 px-2  ">
+        <CommentList />
+      </section>
+
       <section id="education" className="bg-[#1c2741] py-8 lg:px-25 px-6">
         <Educational />
       </section>

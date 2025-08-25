@@ -42,7 +42,7 @@ const Comment = () => {
       }
 
       console.log(commentUserData);
-      // reset(); // Clear form
+      // reset(); 
     } catch (error) {
       toast.error("Failed to submit comment.");
       console.error(error);

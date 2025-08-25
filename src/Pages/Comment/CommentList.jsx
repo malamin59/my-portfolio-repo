@@ -6,12 +6,12 @@ import { Link } from "react-router";
 const CommentList = () => {
   const [comments, setComments] = useState([]);
 
-  // Fetch all comments with Axios
   useEffect(() => {
     const fetchComments = async () => {
       try {
         const res = await axios.get(`${import.meta.env.VITE_API_URL}/comments`);
         setComments(res.data);
+        console.table(res.data)
       } catch (err) {
         console.error(err);
       }
@@ -35,14 +35,14 @@ const CommentList = () => {
     return <p className="text-center mt-10">No comments found!</p>;
 
   return (
-    <div className="mb-20">
+    <div className="">
       {/* Title + Write Comment Link */}
-      <div className="text-center flex mt-10 flex-col text-info">
+      <div className="text-center flex  flex-col text-info">
         <p className="text-3xl md:text-3xl lg:text-4xl italic font-bold">
-          Our users say
+           users say
         </p>
         <Link
-          className="mt-2 text-xl text-end hover:underline"
+          className="text-xl mr-4 text-end  my-8 mt-6 hover:underline"
           to="/comment"
         >
           write your comment
@@ -50,7 +50,7 @@ const CommentList = () => {
       </div>
 
       {/* Auto Scrolling List */}
-      <div className="relative h-[300px] my-10 w-full overflow-hidden p-4">
+      <div className="relative h-[300px]  w-full overflow-hidden p-4">
         <motion.div
           className="flex flex-col gap-4"
           animate={{ y: ["-50%", "0%"] }}
@@ -66,9 +66,9 @@ const CommentList = () => {
               className="flex items-start gap-3 bg-gray-100 p-3 rounded-md shadow-sm w-full"
             >
               {/* User Photo */}
-              {comment.photoURL && (
+              {comment.image && (
                 <img
-                  src={comment.photoURL}
+                  src={comment.image}
                   alt={comment.name}
                   className="w-10 h-10 rounded-full object-cover border"
                 />
