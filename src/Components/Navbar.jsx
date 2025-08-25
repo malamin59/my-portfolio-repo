@@ -14,6 +14,7 @@ const Navbar = () => {
     "education",
     "projects",
     "contact",
+ 
   ];
 
   const active = location.hash ? location.hash.substring(1) : "home";

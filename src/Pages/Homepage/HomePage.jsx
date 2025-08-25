@@ -6,6 +6,7 @@ import Skills from "../Skills/Skills";
 import Educational from "../Educational/Educational.JSX";
 import Contact from "../Contact/Contact";
 import Project from "../Project/Project";
+import Comment from "../Comment/Comment";
 
 export default function HomePage() {
   return (
